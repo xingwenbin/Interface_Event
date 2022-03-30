@@ -9,7 +9,6 @@ Describe: 全局管理中的接口管理，其中包含新增接口、查看、�
 import unittest
 from xd_api_test.util.config import *
 from xd_api_test.util.request_util import RequestUtil
-
 class Interface_Management(unittest.TestCase):
     ''' 接口管理相关业务'''
     def test_1_Add_Interface(self):

@@ -14,7 +14,7 @@ class Project_Management(unittest.TestCase):
     ''' 项目管理'''
 
     def test_1_Set_up_the(self):
-        ''' 设置业务：开启'''
+        ''' 设置业务：开启 '''
         url = 'http://srv-newgrid-gateway---integrated.jiahuayun-huanbao-dev.rocktl.com/grid/v1/gridauth/pconfig/updateIsStartFlow'
         data = {
             'configValue': '1',
@@ -26,7 +26,7 @@ class Project_Management(unittest.TestCase):
         self.assertEqual(re['msg'], "新增成功")
 
     def test_2_Set_down_the(self):
-        ''' 设置业务：开启'''
+        ''' 设置业务：关闭  '''
         url = 'http://srv-newgrid-gateway---integrated.jiahuayun-huanbao-dev.rocktl.com/grid/v1/gridauth/pconfig/updateIsStartFlow'
         data = {
             'configValue': '0',

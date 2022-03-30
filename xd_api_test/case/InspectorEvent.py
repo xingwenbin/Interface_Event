@@ -2,12 +2,11 @@
 
 import unittest
 from xd_api_test.util.request_util import RequestUtil
-from xd_api_test.util.config import headers,host
+from xd_api_test.util.config import headers
 import json
 
 # host = "http://srv-newgrid-event---integrated.jiahuayun-huanbao-dev.rocktl.com"
 headers = headers
-host = host
 class Event(unittest.TestCase):
 
     def test_Event(self):
