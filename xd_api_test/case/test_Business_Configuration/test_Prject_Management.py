@@ -14,7 +14,6 @@ class Project_Management(unittest.TestCase):
 
 
 
-
     ''' 项目管理'''
 
     def test_1_Set_up_the(self):
