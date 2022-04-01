@@ -66,7 +66,7 @@ class Interface_Management(unittest.TestCase):
         print(re)
         self.assertEqual(re['msg'], "查询成功")
 
-    def test_4_Select_Project(self):
+    def test_5_Select_Project(self):
 
         ''' 所属所属项目查询'''
         url = 'http://srv-newgrid-gateway---integrated.jiahuayun-huanbao-dev.rocktl.com/grid/v1/gridauth/pinter/page'
