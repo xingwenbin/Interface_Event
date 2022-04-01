@@ -66,18 +66,18 @@ class Interface_Management(unittest.TestCase):
         print(re)
         self.assertEqual(re['msg'], "查询成功")
 
-    # def test_4_Select_Project(self):
-    #
-    #     ''' 所属所属项目查询'''
-    #     url = 'http://srv-newgrid-gateway---integrated.jiahuayun-huanbao-dev.rocktl.com/grid/v1/gridauth/pinter/page'
-    #     data ={
-    #         'pageSize': '20',
-    #         'pageNum': '1',
-    #         'total': '60',
-    #         'key':'dept_byproject_inter',
-    #         'projectId': ''
-    #     }
-    #     request = RequestUtil()
-    #     re = request.request(url,'get', headers=headers,param=data,content_type='application/json')
-    #     print(re)
-    #     self.assertEqual(re['msg'], "查询成功")
+    def test_4_Select_Project(self):
+
+        ''' 所属所属项目查询'''
+        url = 'http://srv-newgrid-gateway---integrated.jiahuayun-huanbao-dev.rocktl.com/grid/v1/gridauth/pinter/page'
+        data ={
+            'pageSize': '20',
+            'pageNum': '1',
+            'total': '0',
+            'key':'',
+            'projectId': '0'
+        }
+        request = RequestUtil()
+        re = request.request(url,'get', headers=headers,param=data,content_type='application/json')
+        print(re)
+        self.assertEqual(re['msg'], "查询成功")
