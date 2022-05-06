@@ -1,54 +1,72 @@
-# _*_ coding: utf-8 _*_
-"""
-Time:     2022-03-25 9:19
-Author:   Xing Wen Bin
-Version:  V 0.1
-File:     test.py
-Describe: Write during the internship at Hikvison, Github link: https://github.com/Deeachain/GraphEmbeddings
-"""
-
-from xd_api_test.util.config import headers
+import unittest
 from xd_api_test.util.request_util import RequestUtil
-class test():
-    def getqueryUserId():
+import json
+from xd_api_test.util.config import headers ,host ,projectID
 
-        host = 'http://srv-newgrid-gateway---integrated.jiahuayun-huanbao-dev.rocktl.com/grid/v1/sys/org/getTreeUserBySysCode?sysCode=water&searchName=13353431635'
+class SaveWithUser(unittest.TestCase):
+    '''
+    新增修改网格用户
+    '''
+    def test_saveWithUser(self):
+
+        request = RequestUtil()
+        url = host +"/gridauth/grid/saveWithUser"
+        projectId = projectID
+        data = {"gridName":"测试","bussType":"water","centerLevel":0,"gridDesc":"测试备注","gridParent":"","gridSort":0,"latitude":0,"longitude":0,"userList":[{"projectId":projectId,"sysCode":"water","userIds":"1293728767227408385"},{"projectId":projectId,"sysCode":"water","userIds":"1379614107731165186"},{"projectId":projectID,"sysCode":"water","userIds":"1483681551425028098"}],"gridId":"4ddc0c54908e11eca65ffa163e85f750","projectId":projectId}
+        # response = request.request(url, 'post', headers=headers, param=data, content_type = 'application/json')
         data = {
-            'sysCode': 'water',
-            'searchName': '13353431635'
+          "gridName": "3",
+          "bussType": "air4",
+          "centerLevel": 0,
+          "gridDesc": "",
+          "gridParent": "7fcd719a908e11eca65ffa163e85f750",
+          "gridSort": 0,
+          "latitude": 0,
+          "longitude": 0,
+          "userList": [
+            {
+              "projectId": projectId,
+              "sysCode": "air4",
+              "userIds": "1302782259254726659"
+            }
+          ],
+          "projectId": projectId
         }
-        request = RequestUtil()
-        response = request.request(host, 'get', headers=headers)
-        print(response)
-        print(type(response['data']['child'][0]['child'][0]['id']))
-        # print(response['data']['child']['0']['child']['0']['id'])
-        return response['data']['child'][0]['child'][0]['id']
-    def test_Phone_Sele_Event():
-        url='http://srv-newgrid-gateway---integrated.jiahuayun-huanbao-dev.rocktl.com/grid/v1/gridbusiness/eventAir/pageEventsPost'
-        rs = test.getqueryUserId()
-        print(rs +'********' )
-        data ={
-          "pageNum": 1,
-          "pageSize": 10,
-          "useGridAuth": 'true',
-          "sysCode": "water",
-          "eventType": "2",
-          "queryUserId": f'{rs}',
-          "fuzzyWord": "",
-          "isSelf": 0,
-          "isCollect": 'false',
-          "all-event-to-center": "0",
-          "all-event-list": "0",
-          "startTime": "1647571999395",
-          "endTime": "1648176799395",
-          "isSelfFavorite": 0,
-          "userId": "1483681551425028098",
-          "preAuditState": "1",
-          "projectId": "1209302080142258176"
-        }
+        response = request.request(url,'post', headers=headers,param=data,content_type='application/json')
 
-        request = RequestUtil()
-        response = request.request(url, 'post', param=data,headers=headers,content_type='application/json')
+        #print(headers)
+        '''
+        {
+  "gridName": "1",
+  "bussType": "air4",
+  "centerLevel": 0,
+  "gridDesc": "",
+  "gridParent": "7fcd719a908e11eca65ffa163e85f750",
+  "gridSort": 0,
+  "latitude": 0,
+  "longitude": 0,
+  "userList": [
+    {
+      "projectId": "1209302080142258176",
+      "sysCode": "air4",
+      "userIds": "1302782259254726659"
+    }
+  ],
+  "projectId": "1209302080142258176"
+}
+        '''
+
+        #print(response['data']['records'][0]['mobile'])
+
+        print(url)
+        print(data)
         print(response)
+
+        #self.assertEqual(response['data'],"4ddc0c54908e11eca65ffa163e85f750")
+        #self.assertEqual(response['data']['records'][0]['mobile'],'18511248407')
+        #
+        #self.assertTrue(len(response['data']) > 0, "分类列表为空")
+
+
 if __name__ == '__main__':
-    test.test_Phone_Sele_Event()
+     unittest.main(verbosity=2)

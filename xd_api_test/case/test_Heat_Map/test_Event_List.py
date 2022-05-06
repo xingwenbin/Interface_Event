@@ -177,18 +177,14 @@ class My_to_do(unittest.TestCase):
         response = request.request(url, 'get', headers=headers, param=data, content_type='application/json')
         print(response)
         self.assertEqual(response['msg'], "查询成功")
-    @classmethod
-    def test_4_To_Do_autou_Event(self,reportTypes):
+
+    def test_4_To_Do_autou_Event(self):
         ''' 我的待办全部事件查询:状态查询  ，已待派遣为例'''
         url ='http://srv-newgrid-gateway---integrated.jiahuayun-huanbao-dev.rocktl.com/grid/v1/gridbusiness/event/pageTasks'
-        # print(url)
-        # reportType ='2's
-        # self.reportTypes
-        # reportTypes = My_to_do.test_5_To_Do_Event_Send().reportTypes
         data ={
         'dealCode':'1',
         'sysCode':'',
-        'reportType':reportTypes,
+        'reportType':'2',
         'useGridAuth':'false',
         'userId': '1483681551425028098',
         'pageNum': '0',
@@ -206,13 +202,10 @@ class My_to_do(unittest.TestCase):
         print(response)
         # self.assertEqual(response['msg'], "查询成功")
         for i in response['data']['records']:
-            # print(type(i))
-            # print(i)
             if i['anonymousReportKey'] == '56I0q92n':
                 print(i)
                 print(i['eventId'])
-                # print(i['operId'])
-                # print(i['replaceGridId'])
+
 
 
     def test_5_To_Do_Event_Send(self):
